@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Nombres</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+    <style>
+        body {
+            background-color: #f5f5f500;
+           
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 1rem;
+            font-size: 2rem;
+            text-align: center;
+            background-color: rgb(32, 143, 138);
+            color: #f5f5f5;
+            margin-bottom: 2rem;
+        }
+
+        main {
+            flex: 1; /* Para que ocupe el espacio restante */
+            text-align: center;
+        }
+
+        .title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .button {
+            border-radius: 50px;
+        }
+
+        .notification {
+            display: none; /* Ocultar la notificación inicialmente */
+            margin-top: 2rem;
+            border-radius: 5px;
+        }
+
+        footer {
+            padding: 15px;
+            color: rgb(146, 146, 146);
+            background-color: rgb(13, 85, 79);
+            text-align: center;
+            font-family: "Varela Round", sans-serif;
+            font-style: normal;
+            width: 100%;
+            bottom: 0;
+            position: sticky;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="title">Generador de Nombres</h1>
+    </header>
+    <main>
+        <div class="container">
+            <h2 class="subtitle">¡Bienvenido al generador de nombres aleatorios! Presiona el botón para generar un nombre.</h2>
+            <button id="generar" class="button is-primary">Generar Nombre</button>
+            <hr>
+            <div class="notification is-success" id="resultado">
+
+               
+                <!-- La notificacion de exito se llenara dinamicamente con JavaScript -->
+            </div>
+        </div>
+    </main>
+    <footer>© Universidad Tecnológica Metropolitana 2024 | YAOP</footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const nombresMasculinos = ['Alexis', 'Angel', 'Geovany', 'Adrian', 'Eithan', 'Jorge', 'Manuel', 'Jafet', 'Fernando', 'Diego'];
+            const nombresFemeninos = ['Alejandra', 'Maria', 'Laura', 'Marcela', 'Florencia', 'Alana', 'Andrea', 'Adriana', 'Mariana', 'Estela'];
+
+            const botonGenerar = document.getElementById('generar');
+            const notificacion = document.getElementById('resultado');
+            const resultadoFooter = document.getElementById('resultadoFooter');
+
+            botonGenerar.addEventListener('click', function () {
+                const nombreAleatorioMasculino = nombresMasculinos[Math.floor(Math.random() * nombresMasculinos.length)];
+                const nombreAleatorioFemenino = nombresFemeninos[Math.floor(Math.random() * nombresFemeninos.length)];
+
+                const generoAleatorio = Math.random() < 0.5 ? 'masculino' : 'femenino';
+                const nombreGenerado = generoAleatorio === 'masculino' ? nombreAleatorioMasculino : nombreAleatorioFemenino;
+
+                
+                notificacion.innerHTML = `<strong>Nombre generado:</strong> ${nombreGenerado}`;
+                notificacion.style.display = 'block'; // Mostrar la notificacion
+
+                 
+            });
+        });
+    </script>
+</body>
+
+</html>
 
